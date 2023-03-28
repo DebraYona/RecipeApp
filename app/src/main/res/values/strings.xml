@@ -6,4 +6,7 @@
     <string name="cd_search_bar_icon">Search input text</string>
     <string name="cd_clear_search_bar">Clear search text</string>
     <string name="search_bar_hint">Search</string>
+    <string name="no_results_found">No results found</string>
+    <string name="error_title">Something went wrong</string>
+    <string name="retry">Try again</string>
 </resources>
