@@ -18,7 +18,7 @@ interface ApiClient {
 
     @GET(Constants.GET_RECIPE_DETAIL)
     suspend fun getRecipeDetail(
-        @Path("id") id: Int,
+        @Path("idRecipe") id: Int,
     ): Response<RecipeDetailResponse>
 
 }

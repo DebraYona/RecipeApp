@@ -11,5 +11,6 @@ data class InstructionEntity(
     @ColumnInfo(name = "step") val step: Int,
     @ColumnInfo(name = "instruction") val instruction: String
 ){
+    @PrimaryKey
     var id: String = "$recipeId-$step"
 }

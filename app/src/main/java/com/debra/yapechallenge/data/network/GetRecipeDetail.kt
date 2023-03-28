@@ -11,9 +11,9 @@ import javax.inject.Inject
 
 class GetRecipeDetail @Inject constructor(private val api: ApiClient) {
 
-    suspend fun getRecipeDetail(id:Int): SimpleResponse<RecipeDetailResponse> {
+    suspend fun getRecipeDetail(idRecipe:Int): SimpleResponse<RecipeDetailResponse> {
         return withContext(Dispatchers.IO) {
-            safeApiCall { api.getRecipeDetail(id) }
+            safeApiCall { api.getRecipeDetail(idRecipe) }
         }
     }
 

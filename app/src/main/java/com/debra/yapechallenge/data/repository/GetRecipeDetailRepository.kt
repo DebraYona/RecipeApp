@@ -14,8 +14,8 @@ class GetRecipeDetailRepository @Inject constructor(
     private val recipeDao: RecipeDao
 ) {
 
-    suspend fun getRecipeDetailRepository(id: Int): RecipeWithInformation? {
-        val response = api.getRecipeDetail(id)
+    suspend fun getRecipeDetailRepository(idRecipe: Int): RecipeWithInformation? {
+        val response = api.getRecipeDetail(idRecipe)
         if (response.failed) return null
 
         if (!response.isSuccessful) return  null
