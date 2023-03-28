@@ -4,14 +4,15 @@ import androidx.room.*
 import com.debra.yapechallenge.domain.model.Ingredient
 import com.debra.yapechallenge.domain.model.Instruction
 import com.debra.yapechallenge.domain.model.Recipe
+import com.debra.yapechallenge.domain.model.RecipeWithInformation
 
 @Entity(tableName = "recipes")
 data class RecipeEntity(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "servings") val servings: Int,
+    @ColumnInfo(name = "servings") val servings: Int?,
     @ColumnInfo(name = "imageUrl") val imageUrl: String,
-    @ColumnInfo(name = "readyInMinutes") val readyInMinutes: Int,
+    @ColumnInfo(name = "readyInMinutes") val readyInMinutes: Int?,
 ){}
 
 data class RecipeInformationEntity(
@@ -30,8 +31,8 @@ data class RecipeInformationEntity(
 
 // Extensions
 
-fun RecipeInformationEntity.asDomainModel(): Recipe {
-    return Recipe(
+fun RecipeInformationEntity.toDomain(): RecipeWithInformation {
+    return RecipeWithInformation(
         id = recipe.id,
         name = recipe.name,
         imageUrl = recipe.imageUrl,

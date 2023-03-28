@@ -7,8 +7,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "instructions")
 data class InstructionEntity(
-    @PrimaryKey val id: Int,
     @ColumnInfo(name = "recipe_id") val recipeId: Int,
     @ColumnInfo(name = "step") val step: Int,
-    @ColumnInfo(name = "instruction") val instruction: String,
-){}
+    @ColumnInfo(name = "instruction") val instruction: String
+){
+    var id: String = "$recipeId-$step"
+}

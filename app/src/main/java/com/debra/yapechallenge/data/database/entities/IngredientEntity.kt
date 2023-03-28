@@ -11,5 +11,5 @@ data class IngredientEntity(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "original") val original: String,
     @ColumnInfo(name = "amount") val amount: Float,
-    @ColumnInfo(name = "unit") val unit: String,
+    @ColumnInfo(name = "unit") val unit: String
 ){}

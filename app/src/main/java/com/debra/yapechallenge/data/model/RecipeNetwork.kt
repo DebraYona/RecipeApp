@@ -3,6 +3,7 @@ package com.debra.yapechallenge.data.model
 import com.debra.yapechallenge.domain.model.Ingredient
 import com.debra.yapechallenge.domain.model.Instruction
 import com.debra.yapechallenge.domain.model.Recipe
+import com.debra.yapechallenge.domain.model.RecipeWithInformation
 import com.google.gson.annotations.SerializedName
 
 data class RecipeNetwork(
@@ -43,7 +44,7 @@ data class IngredientNetwork(
     val unit: String
 )
 
-fun RecipeWithInformationNetwork.asDomainModel(): Recipe {
+fun RecipeWithInformationNetwork.toDomain(): RecipeWithInformation {
     var instructions = listOf<Instruction>()
     var ingredients = listOf<Ingredient>()
 
@@ -59,7 +60,7 @@ fun RecipeWithInformationNetwork.asDomainModel(): Recipe {
         }
     }
 
-    return Recipe(
+    return RecipeWithInformation(
         id = id,
         name = name,
         imageUrl = imageUrl,
@@ -69,6 +70,15 @@ fun RecipeWithInformationNetwork.asDomainModel(): Recipe {
         ingredients = ingredients
     )
 }
+
+fun RecipeNetwork.toDomain() =
+    Recipe(
+        id = id,
+        name = name,
+        imageUrl = imageUrl,
+        readyInMinutes = readyInMinutes,
+        servings = servings,
+    )
 
 fun StepNetwork.asDomainModel() = Instruction(step, instruction)
 

@@ -1,7 +1,7 @@
 package com.debra.yapechallenge.data.network
 
+import com.debra.yapechallenge.data.model.RecipeDetailResponse
 import com.debra.yapechallenge.data.model.RecipeSearchResponse
-import com.debra.yapechallenge.data.model.RecipeWithInformationNetwork
 import com.debra.yapechallenge.util.SimpleResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

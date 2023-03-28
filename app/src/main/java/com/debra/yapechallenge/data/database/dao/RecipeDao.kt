@@ -12,11 +12,14 @@ interface RecipeDao {
 
     @Transaction
     @Query("SELECT * FROM recipes")
-    fun getRecipesWithInformation(): Flow<List<RecipeInformationEntity>>
+    fun getRecipesWithInformation(): List<RecipeInformationEntity>
 
     @Transaction
+    @Query("SELECT * FROM recipes")
+    fun getRecipes(): List<RecipeEntity>
+    @Transaction
     @Query("SELECT * FROM recipes WHERE id = :id")
-    fun getRecipeById(id: Int): Flow<RecipeInformationEntity?>
+    fun getRecipeById(id: Int): RecipeInformationEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRecipe(
