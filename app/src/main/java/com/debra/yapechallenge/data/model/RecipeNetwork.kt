@@ -20,6 +20,9 @@ data class RecipeWithInformationNetwork(
     val readyInMinutes: Int?,
     val servings: Int?,
     val imageUrl: String,
+    val country: String,
+    val lat: Float,
+    val lng: Float,
     @SerializedName("instructions")
     val instructions: List<InstructionsNetwork>?,
     @SerializedName("ingredients")
@@ -27,14 +30,9 @@ data class RecipeWithInformationNetwork(
 ){}
 
 data class InstructionsNetwork(
-    val steps: List<StepNetwork>
-)
-
-data class StepNetwork(
     val step: Int,
     val instruction: String,
 )
-
 
 data class IngredientNetwork(
     val id: Int,
@@ -49,7 +47,7 @@ fun RecipeWithInformationNetwork.toDomain(): RecipeWithInformation {
     var ingredients = listOf<Ingredient>()
 
     if (this.instructions?.isNotEmpty() == true) {
-        instructions = this.instructions.first().steps.map {
+        instructions = this.instructions.map {
             it.asDomainModel()
         }
     }
@@ -80,6 +78,7 @@ fun RecipeNetwork.toDomain() =
         servings = servings,
     )
 
-fun StepNetwork.asDomainModel() = Instruction(step, instruction)
-
 fun IngredientNetwork.asDomainModel() = Ingredient(id, name, original, amount, unit)
+
+fun InstructionsNetwork.asDomainModel() = Instruction(step, instruction)
+
